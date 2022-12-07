@@ -3,8 +3,8 @@ const { Client, GatewayIntentBits } = require('discord.js')
 //Create a new Discord client object, which will be used to communicate with the Discord API:
 const client = new Client({
     intents: [
-      GatewayIntentBits.Guilds,
-      GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages
     ]
     });
 
@@ -13,14 +13,13 @@ client.once('ready', () => {
     console.log('Logged in as '+ client.user.tag);    
 });
 
-client.login(process.env.DISCORD_BOT_TOKEN);
 
-
-// register a new command with the name "ping"
-client.on('message', message => {
-    if (message.content === '!ping') {
+// register a new command with the name "ping" 
+client.on('message', async message => {
+    if (message.content === 'hello') {
         // send back "Pong." to the channel the message was sent in
-        message.channel.send('Pong.');
+        await message.channel.send('world');
     }
 });
 
+client.login(process.env.DISCORD_BOT_TOKEN);
