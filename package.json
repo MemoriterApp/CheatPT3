@@ -1,0 +1,22 @@
+{
+  "name": "cheatpt3-1",
+  "version": "1.0.0",
+  "description": "Bot to help users do homework",
+  "main": "discord.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MemoriterApp/CheatPT3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MemoriterApp/CheatPT3/issues"
+  },
+  "homepage": "https://github.com/MemoriterApp/CheatPT3#readme",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  }
+}
