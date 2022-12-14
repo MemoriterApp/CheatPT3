@@ -17,8 +17,10 @@ async def prompt_example(ctx):
     # Wait for the user's response
     response = await bot.wait_for("message", check=lambda message: message.author == ctx.author)
 
+    AIprompt = response.content # get the user's response
+
     # Do something with the user's response
-    await ctx.send(f"I would answer the following: {response.content}")
+    await ctx.send(f"Your task is the following: {AIprompt}")
    
 @client.event
 async def on_ready():
