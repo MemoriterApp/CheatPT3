@@ -7,18 +7,18 @@ from discord.ext import commands
 
 load_dotenv() # load the .env file
 TOKEN = os.getenv('DISCORD_TOKEN') # get the token from the .env file
-#openai.api_key = "your-api-key" # replace with your OpenAI API key
+#openai.api_key = os.gentenv('API_TOKEN') # replace with your OpenAI API key
 
-client = discord.Client(intents=discord.Intents.all()) # a client is a connection to Discord
-bot = commands.Bot(command_prefix='$', intents=discord.Intents.all())
-
-@bot.command()
+#client = discord.Client(intents=discord.Intents.all()) # a client is a connection to Discord
+client = discord.Client(intents=discord.Intents.all())
+client = commands.Bot(command_prefix='$', intents=discord.Intents.all())
+@client.command()
 async def prompt_example(ctx):
-    # Ask the user a question
+    print("1")
     await ctx.send("Tell me your task!")
 
     # Wait for the user's response
-    response = await bot.wait_for("message", check=lambda message: message.author == ctx.author)
+    response = await client.wait_for("message", check=lambda message: message.author == ctx.author)
 
     AiPrompt = response.content # get the user's response
 
