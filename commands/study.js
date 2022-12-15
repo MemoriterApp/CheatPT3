@@ -9,7 +9,7 @@ module.exports = {
 				.setDescription('The question to be answered')
 				.setRequired(true)),
 	async execute(interaction) {
-		const prompt = interaction.options.getString('question');
-		await interaction.reply('You asked: ' + prompt + '');
+		const AiPrompt = interaction.options.getString('question');
+		await interaction.reply('You asked: ' + AiPrompt + '');
 	},
 };
