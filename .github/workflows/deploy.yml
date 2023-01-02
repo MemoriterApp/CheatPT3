@@ -1,0 +1,33 @@
+name: Deploy Development
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Build and Push to Github Docker Repo
+        run: |
+          echo "${{ github.token }}" | docker login https://ghcr.io -u ${GITHUB_ACTOR} --password-stdin
+          docker build -t ghcr.io/MemoriterApp/CheatPT3:latest .
+          docker push ghcr.io/MemoriterApp/CheatPT3:latest
+
+      - name: Deploying to Docker
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: /root/cheatpt3/deploy.sh
