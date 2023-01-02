@@ -20,8 +20,8 @@ jobs:
       - name: Build and Push to Github Docker Repo
         run: |
           echo "${{ github.token }}" | docker login https://ghcr.io -u ${GITHUB_ACTOR} --password-stdin
-          docker build -t ghcr.io/MemoriterApp/CheatPT3:latest .
-          docker push ghcr.io/MemoriterApp/CheatPT3:latest
+          docker build -t ghcr.io/memoriterapp/cheatpt3:latest .
+          docker push ghcr.io/memoriterapp/cheatpt3:latest
 
       - name: Deploying to Docker
         uses: appleboy/ssh-action@master
