@@ -1,9 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { Configuration, OpenAIApi } = require('openai');
-const { APIKey } = require('../config.json');
 // Set up the OpenAI API client
 const configuration = new Configuration({
-    apiKey: APIKey,
+    apiKey: process.env.API_KEY,
     organization: 'org-S1UJXi06d6Dk4asCwduIssYC',
 });
 const openai = new OpenAIApi(configuration);
